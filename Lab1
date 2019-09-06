@@ -1,0 +1,45 @@
+//Eliot Brown  rec01 in C++ Lab1
+// This is lab 1 in OOP which is opening a file and counting the words within that file. 
+// Sepetember 6th 2019
+
+#include <iostream>
+#include <string>
+#include <fstream>
+using namespace std;
+
+
+
+int main() {
+	ifstream input_file("Text.txt");
+
+	// tests to open file
+	if (!input_file) {
+		cerr << "Could not open the file.\n";
+		exit(1);
+	}
+
+	//gets a line 
+	string line;
+
+	while (getline(input_file, line)) {
+		cout << line << endl;
+	}
+
+	input_file.clear();
+	//resets the file position to the beginning
+	input_file.seekg(0);
+
+	//goes through each word 
+	string aWord;
+	int count = 0;
+	while (input_file >> aWord) {
+		//cout << aWord << endl;
+		++count;
+	}
+	cout << count;
+
+	//closes file
+	input_file.close();
+
+
+}
